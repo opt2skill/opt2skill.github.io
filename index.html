@@ -312,9 +312,9 @@
         
         <p>
           In shelf manipulation scenarios, the Digit robot squats to pick up a plastic box from a lower shelf and places it on a higher one. 
-          Its hands can reach heights ranging from <span>$0.45$</span> m to <span>$1.8$</span> m. 
+          Its hands can reach heights ranging from 0.45 m to 1.8 m. 
           Opt2Skill demonstrates accurate tracking of hand positions throughout these complex motion sequences, 
-          achieving an average tracking error of less than <span>$0.4$</span> cm without online trajectory adaptation.
+          achieving an average tracking error of less than 0.4 cm without online trajectory adaptation.
         </p>
 
 
@@ -326,6 +326,89 @@
                 <source src="assets/hardware/new/shelf_object_manipulation_2.mp4" type="video/mp4">
             </video>
         </div>
+
+
+        <p>
+          Additionally, Opt2Skill enables other real-world tasks, 
+          such as <i>heavy box pickup</i>, <i>pickup+walk</i>, <i>door opening</i>, and <i>drawing+wiping</i>. 
+
+          <br>
+        <p>
+          In the <i>heavy box pickup</i> task, the robot squats down and successfully lifts a box weighing up to 4.9 kg. 
+          This task requires precise hand positioning and force control to lift the box without losing balance or dropping it.
+        </p>
+
+        <div class="allegroupper">
+            <video autoplay muted playsinline loop preload="metadata">
+                <source src="assets/hardware/new/box_pickup_0.3kg.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted playsinline loop preload="metadata">
+                <source src="assets/hardware/new/box_pickup_4.9kg.mp4" type="video/mp4">
+            </video>
+        </div>
+
+          <br>
+          In the <i>pickup+walk</i> task, the robot picks up a box from a standing pose and walks forward while carrying it. 
+          This requires the robot to maintain balance and apply sufficient contact force to hold the box, 
+          demanding accurate hand positioning and force control. 
+          The task demonstrates Opt2Skill’s ability to adapt to dynamic load changes and maintain stability during locomotion.
+
+
+          <div class="allegrofail">
+            <div class="video_container">
+                <video autoplay muted playsinline loop controls preload="metadata">
+                    <source src="assets/hardware/new/pick_walk.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
+        <br>
+        <p>
+          In the <i>door opening</i> task, the robot approaches two heavy fire doors and pushes them open using both arms while walking.
+          This requires maintaining balance and applying sufficient force, demonstrating the robot's ability to handle heavy objects and adapt to dynamic environments.
+        </p>
+
+        <div class="allegrofail">
+            <div class="video_container">
+                <video autoplay muted playsinline loop controls preload="metadata">
+                    <source src="assets/hardware/new/singgle_door_opening.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+
+        <div class="allegroupper">
+            <video autoplay muted playsinline loop preload="metadata">
+                <source src="assets/hardware/new/double_door_opening_1.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted playsinline loop preload="metadata">
+                <source src="assets/hardware/new/double_door_opening_2.mp4" type="video/mp4">
+            </video>
+        </div>
+          
+
+        <br>
+        <p>
+          In the <i>drawing+wiping</i> task, the robot uses one hand to draw lines on a whiteboard and the other hand to wipe them off. 
+          This task requires precise hand positioning and force control to ensure the lines are drawn clearly and erased effectively.
+        </p>
+           
+        <div class="allegroupper">
+            <video autoplay muted playsinline loop preload="metadata">
+                <source src="assets/hardware/new/board_drawing_wiping.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted playsinline loop preload="metadata">
+                <source src="assets/hardware/new/desk_wiping.mp4" type="video/mp4">
+            </video>
+        </div>  
+
+        <br>
+        <p>
+          These results illustrate that our framework maintains compliant contact, 
+          adapts effectively to environmental variations, and enables the robot to perform everyday loco-manipulation behaviors. 
+          Together, these examples further highlight the versatility and generalization capability of the Opt2Skill framework across diverse real-world scenarios.
+        </p>
+
 
        
         <h1>BibTeX</h1>
