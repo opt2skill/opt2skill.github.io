@@ -36,11 +36,20 @@
             </div>
             <div class="button-container">
                 <a href="https://arxiv.org/abs/2409.20514" class="button">Paper</a>
-                <a href="https://www.youtube.com/watch?v=DRHfpCYXJfU" class="button">Video</a>
+                <!-- <a href="https://www.youtube.com/watch?v=DRHfpCYXJfU" class="button">Video</a> -->
             </div>
 
             <br>
 
+            <div class="teaser">
+                <div class="video_container">
+                    <video autoplay muted playsinline loop controls preload="metadata">
+                        <source src="assets/hardware/demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            
+            <br>
             <div id="abstract" class="grid-container">
                 <p>
                 Humanoid robots are designed to perform diverse loco-manipulation tasks. However, they face challenges due to their high-dimensional and unstable dynamics, as well as the complex contact-rich nature of the tasks. 
@@ -85,7 +94,7 @@
           To support robust policy learning across a wide range of loco-manipulation behaviors, 
           we generate reference trajectories for diverse tasks, 
           including <i>walking</i>, <i>jumping</i>, <i>stair climbing</i>, <i>object manipulation</i>, <i>drawing+wiping</i>, and <i>door opening</i>. 
-          For each task, we systematically vary key motion parameters such as <i>gait phase</i>., <i>contact mode</i>., <i>walking speed</i>., <i>foot clearance</i>., <i>center of mass position</i>., and <i>target object location</i>.. 
+          For each task, we systematically vary key motion parameters such as <i>gait phase</i>., <i>contact mode</i>., <i>walking speed</i>., <i>foot clearance</i>., <i>center of mass position</i>., and <i>target object location</i>. 
           Leveraging the flexibility of our trajectory optimization (TO) framework, 
           we efficiently sample these parameters to produce large datasets of motions that satisfy full-body dynamics, contact constraints, and torque limits.
           <br>
@@ -120,7 +129,7 @@
 
         <p>
           We compare Opt2Skill with baselines that rely on human demonstrations and inverse kinematics-based references.
-          These results show that physical feasibility and task adaptability of TO-based references contribute to both local tracking accuracy and long-term global stability..
+          These results show that physical feasibility and task adaptability of TO-based references contribute to both local tracking accuracy and long-term global stability.
         </p>
 
         <div class="allegrofail">
@@ -144,7 +153,7 @@
         </div>
 
 
-        <h1>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</h1>
+        <h1><i>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</i></h1>
 
         <p>
           We conduct additional simulation experiments to investigate the effect of torque information in contact-rich tasks. 
@@ -152,9 +161,9 @@
           We evaluate four ablation baselines:
           <br>
 
-        <strong>Pos</strong>: tracks end-effector positions without any contact or torque information in the observation or reward.</li>
-        <strong>Pos+F</strong>: adds reference contact force to the observation and includes a contact force tracking reward.</li>
-        <strong>Pos+T</strong>: adds reference joint torques to the observation and includes a torque tracking reward.</li>
+        <strong>Pos</strong>: tracks end-effector positions without any contact or torque information in the observation or reward.</li><br>
+        <strong>Pos+F</strong>: adds reference contact force to the observation and includes a contact force tracking reward.</li><br>
+        <strong>Pos+T</strong>: adds reference joint torques to the observation and includes a torque tracking reward.</li><br>
         <strong>Pos+F+T</strong>: adds both reference contact force and joint torques in the observation, along with corresponding force and torque tracking rewards.</li>
         </p>
         
@@ -359,8 +368,7 @@
 
         <h1>Acknowledgements</h1>
         <p>
-          The authors would like to thank all the developers of <a href="https://github.com/loco-3d/crocoddyl" target="_blank" style="color: blue;">Crocoddyl</a> 
-          and <a href="https://github.com/stack-of-tasks/pinocchio" target="_blank" style="color: blue;">Pinocchio</a> for their open source frameworks. 
+          The authors would like to thank all the developers of Crocoddyl and Pinocchio for their open source frameworks. 
           We are especially grateful to <a href="https://zhaomingxie.github.io/" target="_blank" style="color: blue;">Zhaoming Xie</a> and <a href="https://cmastalli.github.io/" target="_blank" style="color: blue;">Carlos Mastalli</a> for their professional discussions and insightful feedback.
         </p>
        
