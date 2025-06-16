@@ -66,123 +66,6 @@
     
     <div id="overview">
 
-      
-
-        <h1>Opt2Skill</h1>
-
-        <p>
-        Opt2Skill aims to develop an RL-based whole-body controller that enables a humanoid robot to track model-based optimal trajectories. 
-        These trajectories contain valuable torque reference that enables a high success rate in multi-contact loco-manipulation tasks. 
-        We begin by generating dynamically feasible and task-specific motions using DDP. 
-        These trajectories serve as high-quality reference motions that encode contact-rich dynamics, torque limits, and task-solving strategies. 
-        We generate a diverse set of such trajectories offline and use them to guide the training of RL policies that directly predict joint-level target positions.
-        By leveraging physically consistent references, the policy learns robust control strategies that track diverse reference motions sampled offline and transfer effectively to real hardware.
-        </p>
-
-        <div class="approach">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/method_new.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-
-        <h1>Whole-body Reference Motions Generation</h1>
-
-        <p>
-          To support robust policy learning across a wide range of loco-manipulation behaviors, 
-          we generate reference trajectories for diverse tasks, 
-          including <i>walking</i>, <i>jumping</i>, <i>stair climbing</i>, <i>object manipulation</i>, <i>drawing+wiping</i>, and <i>door opening</i>. 
-          For each task, we systematically vary key motion parameters such as <i>gait phase</i>, <i>contact mode</i>, <i>walking speed</i>, <i>foot clearance</i>, <i>center of mass position</i>, and <i>target object location</i>. 
-          Leveraging the flexibility of our trajectory optimization (TO) framework, 
-          we efficiently sample these parameters to produce large datasets of motions that satisfy full-body dynamics, contact constraints, and torque limits.
-          <br>
-          These reference trajectories include joint torques and contact forces, 
-          which are incorporated directly into the policy observations and reward design—facilitating the learning of robust and transferable contact-rich loco-manipulation behaviors.
-        </p>
-        
-        
-          <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/ref_motion.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <h1>Training in MuJoCo</h1>
-
-        <p>
-          We train RL-based motion imitation policies in MuJoCo simulator.
-        </p>
-        <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/training_mujoco.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-
-        <h1><i>How does the quality and source of motion datasets affect the performance and generalization of Humanoid RL Policies?</i></h1>
-
-        <p>
-          We compare Opt2Skill with baselines that rely on human demonstrations and inverse kinematics-based references.
-          These results show that physical feasibility and task adaptability of TO-based references contribute to both local tracking accuracy and long-term global stability.
-        </p>
-
-        <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/baselines/table.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <p>
-          Opt2Skill exhibits a higher success rate on varying terrains. 
-          This highlights the advantages of training with offline-generated, dynamically feasible trajectories compared to fixed human or purely kinematic references.
-        </p>
-        <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/baselines/terrain.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-
-        <h1><i>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</i></h1>
-
-        <p>
-          We conduct additional simulation experiments to investigate the effect of torque information in contact-rich tasks. 
-          Specifically, we focus on a wiping task that requires controlled contact force between the end effector and a desk surface. 
-          We evaluate four ablation baselines:
-          <br>
-
-        <strong>Pos</strong>: tracks end-effector positions without any contact or torque information in the observation or reward.</li><br>
-        <strong>Pos+F</strong>: adds reference contact force to the observation and includes a contact force tracking reward.</li><br>
-        <strong>Pos+T</strong>: adds reference joint torques to the observation and includes a torque tracking reward.</li><br>
-        <strong>Pos+F+T</strong>: adds both reference contact force and joint torques in the observation, along with corresponding force and torque tracking rewards.</li>
-        </p>
-        
-        <p>
-          We demonstrate that joint torque information—available only from trajectory optimization (TO)—enhances tracking performance in contact-rich scenarios. 
-          Torque information plays a crucial role by guiding <em>when</em> and <em>how</em> force should be applied during motion. 
-          Combining both torque and contact force information yields the best tracking performance in loco-manipulation tasks. 
-          TO provides reference torques, which help anchor the policy to physically grounded and consistent behaviors.
-        </p>
-
-        <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/baselines/contactforce.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-
         <h1>Diverse walking modes</h1>
 
         <p>
@@ -353,6 +236,137 @@
           adapts effectively to environmental variations, and enables the robot to perform everyday loco-manipulation behaviors. 
           Together, these examples further highlight the versatility and generalization capability of the Opt2Skill framework across diverse real-world scenarios.
         </p>
+
+      
+
+        <h1>Opt2Skill</h1>
+
+        <p>
+        Opt2Skill aims to develop an RL-based whole-body controller that enables a humanoid robot to track model-based optimal trajectories. 
+        These trajectories contain valuable torque reference that enables a high success rate in multi-contact loco-manipulation tasks. 
+        We begin by generating dynamically feasible and task-specific motions using DDP. 
+        These trajectories serve as high-quality reference motions that encode contact-rich dynamics, torque limits, and task-solving strategies. 
+        We generate a diverse set of such trajectories offline and use them to guide the training of RL policies that directly predict joint-level target positions.
+        By leveraging physically consistent references, the policy learns robust control strategies that track diverse reference motions sampled offline and transfer effectively to real hardware.
+        </p>
+
+        <div class="approach">
+            <div class="video_container">
+                <video loop autoplay muted playsinline preload="metadata">
+                    <source src="assets/method_new.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+
+        <h1>Whole-body Reference Motions Generation</h1>
+
+        <p>
+          To support robust policy learning across a wide range of loco-manipulation behaviors, 
+          we generate reference trajectories for diverse tasks, 
+          including <i>walking</i>, <i>jumping</i>, <i>stair climbing</i>, <i>object manipulation</i>, <i>drawing+wiping</i>, and <i>door opening</i>. 
+          For each task, we systematically vary key motion parameters such as <i>gait phase</i>, <i>contact mode</i>, <i>walking speed</i>, <i>foot clearance</i>, <i>center of mass position</i>, and <i>target object location</i>. 
+          Leveraging the flexibility of our trajectory optimization (TO) framework, 
+          we efficiently sample these parameters to produce large datasets of motions that satisfy full-body dynamics, contact constraints, and torque limits.
+          <br>
+          These reference trajectories include joint torques and contact forces, 
+          which are incorporated directly into the policy observations and reward design—facilitating the learning of robust and transferable contact-rich loco-manipulation behaviors.
+        </p>
+        
+        
+          <div class="allegrofail">
+            <div class="video_container">
+                <video loop autoplay muted playsinline preload="metadata">
+                    <source src="assets/ref_motion.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <h1>Training in MuJoCo</h1>
+
+        <p>
+          We train RL-based motion imitation policies in MuJoCo simulator.
+        </p>
+        <div class="allegrofail">
+            <div class="video_container">
+                <video loop autoplay muted playsinline preload="metadata">
+                    <source src="assets/training_mujoco.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+
+        <h1><i>How does the quality and source of motion datasets affect the performance and generalization of Humanoid RL Policies?</i></h1>
+
+        <p>
+          We compare Opt2Skill with baselines that rely on human demonstrations and inverse kinematics-based references.
+          These results show that physical feasibility and task adaptability of TO-based references contribute to both local tracking accuracy and long-term global stability.
+        </p>
+
+        <div class="allegrofail">
+            <div class="video_container">
+                <video loop autoplay muted playsinline preload="metadata">
+                    <source src="assets/baselines/table.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <p>
+          Opt2Skill exhibits a higher success rate on varying terrains. 
+          This highlights the advantages of training with offline-generated, dynamically feasible trajectories compared to fixed human or purely kinematic references.
+        </p>
+        <div class="allegrofail">
+            <div class="video_container">
+                <video loop autoplay muted playsinline preload="metadata">
+                    <source src="assets/baselines/terrain.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+
+        <h1><i>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</i></h1>
+
+        <p>
+          We conduct additional simulation experiments to investigate the effect of torque information in contact-rich tasks. 
+          Specifically, we focus on a wiping task that requires controlled contact force between the end effector and a desk surface. 
+          We evaluate four ablation baselines:
+          <br>
+
+        <strong>Pos</strong>: tracks end-effector positions without any contact or torque information in the observation or reward.</li><br>
+        <strong>Pos+F</strong>: adds reference contact force to the observation and includes a contact force tracking reward.</li><br>
+        <strong>Pos+T</strong>: adds reference joint torques to the observation and includes a torque tracking reward.</li><br>
+        <strong>Pos+F+T</strong>: adds both reference contact force and joint torques in the observation, along with corresponding force and torque tracking rewards.</li>
+        </p>
+        
+        <p>
+          We demonstrate that joint torque information—available only from trajectory optimization (TO)—enhances tracking performance in contact-rich scenarios. 
+          Torque information plays a crucial role by guiding <em>when</em> and <em>how</em> force should be applied during motion. 
+          Combining both torque and contact force information yields the best tracking performance in loco-manipulation tasks. 
+          TO provides reference torques, which help anchor the policy to physically grounded and consistent behaviors.
+        </p>
+
+        <div class="allegrofail">
+            <div class="video_container">
+                <video loop autoplay muted playsinline preload="metadata">
+                    <source src="assets/baselines/contactforce.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+
+        <h1>Conclusion</h1>
+
+        <p>
+          In this paper, we present a TO-guided RL pipeline for humanoid loco-manipulation. 
+          We show that the RL tracking performance is affected by the quality of the motion reference. 
+          The full-body-dynamics-based TO provides high-quality and dynamically-feasible trajectories. 
+          Based on such trajectories, motion imitation yields better tracking performance, especially through the use of torque information. 
+          We demonstrate our sim-to-real results on the humanoid robot Digit with versatile loco-manipulation skills, 
+          including dynamic stair traversing, multi-contact box manipulation, and door traversing.
+        </p>
+
+
+        
 
 
        
