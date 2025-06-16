@@ -98,7 +98,7 @@
 
     <div id="title_slide">
         <div class="title_left">
-            <h1><strong>Opt2Skill</strong> <br> Imitating Dynamically-feasible Whole-Body <br> Trajectories for Versatile <br> Humanoid Loco-Manipulation</h1>
+            <h1>Opt2Skill: Imitating Dynamically-feasible Whole-Body <br> Trajectories for Versatile Humanoid Loco-Manipulation</h1>
         
 
             <div class="box alt">
@@ -107,9 +107,8 @@
                 <div class="2u"><a href="https://guzhaoyuan.com/">                      <span class="image fit"><img src="assets/author_photo/zhaoyuan.jpg" alt="Zhaoyuan Gu" /></span>Zhaoyuan Gu</a></div>
                 <div class="2u"><a href="https://missinglight.github.io/">              <span class="image fit"><img src="assets/author_photo/yilin.jpg" alt="Yilin Cai" /></span>Yilin Cai</a></div>
                 <div class="2u"><a href="https://ziyi-zhou.github.io/">                 <span class="image fit"><img src="assets/author_photo/ziyi.jpeg" alt="Ziyi Zhou" /></span>Ziyi Zhou</a></div>
-                <div class="2u"><a href="https://hyunyoungjung.github.io/">             <span class="image fit"><img src="assets/author_photo/hyunyoung.jpg" alt="Hyunyoung Jung" /></span>Hyunyoung Jung</a></div>
-                <div class="2u"><a href="https://opt2skill.github.io/">                 <span class="image fit"><img src="assets/author_photo/Jaehwi.png" alt="Jaehwi Jang" /></span>Jaehwi Jang</a></div>
                 <div class="2u"><a href="https://opt2skill.github.io/">                 <span class="image fit"><img src="assets/author_photo/shijie.jpg" alt="Shijie Zhao" /></span>Shijie Zhao</a></div>
+                <div class="2u"><a href="https://hyunyoungjung.github.io/">             <span class="image fit"><img src="assets/author_photo/hyunyoung.jpg" alt="Hyunyoung Jung" /></span>Hyunyoung Jung</a></div>
                 <div class="2u"><a href="https://faculty.cc.gatech.edu/~sha9/">         <span class="image fit"><img src="assets/author_photo/sehoon.jpg" alt="Sehoon Ha" /></span>Sehoon Ha</a></div>
                 <div class="2u"><a href="https://research.gatech.edu/people/yue-chen">  <span class="image fit"><img src="assets/author_photo/yue.jpg" alt="Yue Chen" /></span>Yue Chen</a></div>
                 <div class="2u"><a href="https://faculty.cc.gatech.edu/~danfei/">       <span class="image fit"><img src="assets/author_photo/danfei.jpg" alt="Danfei Xu" /></span>Danfei Xu<sup>†</sup></a></div>
@@ -123,22 +122,19 @@
             </div>
             <div class="button-container">
                 <a href="https://arxiv.org/abs/2409.20514" class="button">Paper</a>
-                <!-- <a href="https://www.youtube.com/watch?v=DRHfpCYXJfU" class="button">Video</a> -->
+                <a href="https://www.youtube.com/watch?v=DRHfpCYXJfU" class="button">Video</a>
             </div>
 
             <br>
 
             <div id="abstract" class="grid-container">
                 <p>
-                Humanoid robots are designed to perform diverse loco-manipulation tasks. 
-                However, they face challenges due to their high-dimensional and unstable dynamics, as well as the complex contact-rich nature of the tasks. 
-                Model-based optimal control methods offer flexibility to define precise motion but are limited by high computational complexity and accurate contact sensing. 
-                On the other hand, reinforcement learning (RL) handles high-dimensional spaces with strong robustness but suffers from inefficient learning, unnatural motion, and sim-to-real gaps. 
-                To address these challenges, we introduce Opt2Skill, an end-to-end pipeline that combines model-based trajectory optimization with RL to achieve robust whole-body loco-manipulation. 
-                Opt2Skill generates dynamic feasible and contact-consistent reference motions for the Digit humanoid robot using differential dynamic programming (DDP) and trains RL policies to track these optimal trajectories. 
-                Our results demonstrate that Opt2Skill outperforms baselines that rely on human demonstrations and inverse kinematics-based references, both in motion tracking and task success rates. 
-                Furthermore, we show that incorporating trajectories with torque information improves contact force tracking in contact-involved tasks, such as wiping a table. 
-                We have successfully transferred our approach to real-world applications.
+                Humanoid robots are designed to perform diverse loco-manipulation tasks. However, they face challenges due to their high-dimensional and unstable dynamics, as well as the complex contact-rich nature of the tasks. 
+                Model-based optimal control methods offer precise and systematic control but are limited by high computational complexity and accurate contact sensing. 
+                On the other hand, reinforcement learning (RL) provides robustness and handles high-dimensional spaces but suffers from inefficient learning, unnatural motion, and sim-to-real gaps. 
+                To address these challenges, we introduce Opt2Skill, an end-to-end pipeline that combines model-based trajectory optimization with RL to achieve robust whole- body loco-manipulation. 
+                We generate reference motions for the Digit humanoid robot using differential dynamic programming (DDP) and train RL policies to track these trajectories. 
+                Our results demonstrate that Opt2Skill outperforms pure RL methods in both training efficiency and task performance, with optimal trajectories that account for torque limits enhancing trajectory tracking. We successfully transfer our approach to real-world applications.
                 </p>
             </div>
         </div>
@@ -152,11 +148,10 @@
         <h1>Opt2Skill</h1>
 
         <p>
-        Opt2Skill aims to develop an RL-based whole-body controller that enables a humanoid robot to track model-based optimal trajectories. 
-        These trajectories contain valuable torque reference that enables a high success rate in multi-contact loco-manipulation tasks. 
-        We begin by generating dynamically feasible and task-specific motions using DDP. These trajectories serve as high-quality reference motions that encode contact-rich dynamics, torque limits, and task-solving strategies. 
-        We generate a diverse set of such trajectories offline and use them to guide the training of RL policies that directly predict joint-level target positions.
-        By leveraging physically consistent references, the policy learns robust control strategies that track diverse reference motions sampled offline and transfer effectively to real hardware.
+        Opt2Skill aims to develop loco-manipulation controllers that enable the Digit humanoid robot to track model-based optimal trajectories. 
+        We start by generating whole-body reference motions that align with the robot's dynamics and meet specific motion targets using DDP through a Crocoddyl solver. These reference trajectories are then used during the training and deployment of our RL policy. 
+        The RL policy augments the reference joint trajectories with a residual term, and the augmented target trajectory is fed into a low-level PD controller for the torque-controlled robot. 
+        Finally, we deploy the RL policies in both simulation and real-world scenarios. 
         </p>
 
         <div class="approach">
@@ -169,7 +164,7 @@
 
 
         <h1>Whole-body Reference Motions Generation</h1>
-        <!-- <p>
+        <p>
           Our approach leverages differential dynamic programming (DDP) to generate whole-body motions that obey the robot's dynamics and task requirements.
         </p>
         <div class="allegrofail">
@@ -178,14 +173,11 @@
                     <source src="assets/TO.mp4" type="video/mp4">
                 </video>
             </div>
-        </div> -->
+        </div>
 
         <p>
-          To support robust policy learning across a wide range of loco-manipulation behaviors, 
-          we generate reference trajectories for diverse tasks, including <i>walking</i>, <i>desk object manipulation</i>, <i>door opening</i>, <i>drawing+wiping</i>, and <i>box pickup+walk</i>. 
-          For each task, we systematically vary key motion parameters such as <i>gait phase</i>, <i>contact mode</i>, <i>walking speed</i>, <i>foot clearance</i>, <i>center of mass position</i>, and <i>target object location</i>. 
-          <br>
-          Leveraging the flexibility of our TO framework, we can efficiently sample these parameters to produce large datasets of motions. Unlike methods based solely on human demonstrations or heuristic design, our approach generates dynamically feasible trajectories, which contain critical dynamics-relevant properties such as joint torques and interaction forces that are often missing from kinematic demonstrations.
+          We study a rich set of loco-manipulation tasks, including walking, stair traversing, agile jumping, desk object reaching, and bulky-object handling.
+          For box manipulation tasks, we design heuristic target goals for the robot's hand trajectory, accounting for the transition between contact phases with and without holding the box by adding or removing its mass and inertia from the hands.
         </p>
         <div class="allegrofail">
             <div class="video_container">
@@ -198,7 +190,7 @@
         <h1>Training in MuJoCo</h1>
 
         <p>
-          We train RL-based motion imitation policies in MuJoCo Playground.
+          We train RL-based motion imitation policies in MuJoCo simulator.
         </p>
         <div class="allegrofail">
             <div class="video_container">
@@ -209,206 +201,43 @@
         </div>
 
 
-        <h1>How does the quality and source of motion datasets affect the performance and generalization of Humanoid RL Policies?</h1>
+        <h1>Compare Pure RL with Opt2Skill</h1>
 
         <p>
-          We compare Opt2Skill with baselines that rely on human demonstrations and inverse kinematics-based references.
-          These results show that physical feasibility and task adaptability of TO-based references contribute to both local tracking accuracy and long-term global stability.
+          We compare Opt2Skill with a pure RL method that learns from scratch in three different tasks, i.e., <i>Walking</i>, <i>Box Pickup</i>, and <i>Desk Object Reaching</i>. 
+          The pure RL baseline excludes reference trajectories in the observation space and the reward design.
         </p>
-
+        <p>
+          Opt2Skill shows more accurate tracking, particularly in velocity for <i>Walking</i> and end-effector positioning for <i>Box Pickup</i> and <i>Desk Object Reaching</i>. 
+          In contrast, pure RL exhibits larger deviations in velocity, fails to lift the box, and could not accurately reach the target object in the <i>Desk Object Reaching</i> task.
+        </p>
         <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/baselines/table.png" type="img/png">
-                </video>
-            </div>
-        </div>
-
-
-        <p>
-          Opt2Skill exhibits a higher success rate on varying terrains. 
-          This highlights the advantages of training with offline-generated, dynamically feasible trajectories compared to fixed human or purely kinematic references.
-        </p>
-        <!-- <div class="allegrofail">
             <div class="video_container">
                 <video loop autoplay muted playsinline preload="metadata">
                     <source src="assets/baseline.mp4" type="video/mp4">
                 </video>
             </div>
-        </div> -->
-        <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/baselines/terrain.jpg" type="img/jpg">
-                </video>
-            </div>
         </div>
 
 
-        <h1>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</h1>
+        <h1>Torque Limits and Tracking Impact</h1>
 
+        <!--<p>
+          A notable challenge in motion imitation using human pose data is that re-targeted motions may not ensure kinematic or dynamic feasibility, which can degrade tracking performance and even cause tracking failures. 
+          To demonstrate how dynamics affect motion data quality, we define a <i>Jumping</i> task. We generate reference trajectories for this task with and without torque limits from the TO and analyze their difference in Opt2Skill's motion imitation performance.
+          Furthermore, we analyze the effect of the torque reference on tracking accuracy.
+        </p>-->
         <p>
-          We conduct additional simulation experiments to investigate the effect of torque information in contact-rich tasks. 
-          Specifically, we focus on a wiping task that requires controlled contact force between the end effector and a desk surface. 
-          We evaluate four ablation baselines:
-          <br>
-          <strong>Pos</strong>: tracks end-effector positions without any contact or torque information in the observation or reward.</li>
-          <br>
-          <strong>Pos+F</strong>: adds reference contact force to the observation and includes a contact force tracking reward.</li>
-          <br>
-          <strong>Pos+T</strong>: adds reference joint torques to the observation and includes a torque tracking reward.</li>
-          <br>
-          <strong>Pos+F+T</strong>: adds both reference contact force and joint torques in the observation, along with corresponding force and torque tracking rewards.</li>
+          We demenstrate that both including the torque limit in the reference trajectory and incorporating the torque reference into reward design significantly contribute to motion tracking performance. 
+          The torque limit ensures a high-quality and dynamically feasible reference trajectory, while the torque reference guides the robot to track the motion more precisely.
         </p>
-
-        <p>
-          We demonstrate that joint torque information—only available from TO—enhances tracking performance in contact-rich scenarios.
-        </p>
-
         <div class="allegrofail">
             <div class="video_container">
                 <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/baselines/contactforce.jpg" type="img/jpg">
+                    <source src="assets/ablation_TO.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
-
-        <h1>Hardware</h1>
-
-        <div class="allegrofail">
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/hardware/new/forward_walking.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="video_container">
-                <video loop autoplay muted playsinline preload="metadata">
-                    <source src="assets/hardware/new/backward_walking.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <!-- <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/forward_walking.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/backward_walking.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/side_walking (right).mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/turn_walking.mp4" type="video/mp4">
-            </video>
-        </div> -->
-        
-
-        <!-- <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/stair_walking.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/ramp_walking.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/outdoor_walking_1.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/outdoor_walking_2.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="allegrolower">
-            <div class="video_container">
-                <video autoplay muted playsinline loop preload="metadata">
-                    <source src="assets/hardware/new/outdoor_walking_1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="video_container">
-                <video autoplay muted playsinline loop preload="metadata">
-                    <source src="assets/hardware/new/outdoor_walking_2.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-
-        <h1>Diverse manipulation modes</h1>
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/shelf_object_manipulation_1.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/shelf_object_manipulation_2.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="allegrolower">
-            <div class="video_container">
-                <video autoplay muted playsinline loop preload="metadata">
-                    <source src="assets/hardware/new/box_pickup_4.9kg.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="video_container">
-                <video autoplay muted playsinline loop preload="metadata">
-                    <source src="assets/hardware/new/desk_object_manipulation.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/pick_walk.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/singgle_door_opening.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="allegrolower">
-            <div class="video_container">
-                <video autoplay muted playsinline loop preload="metadata">
-                    <source src="assets/hardware/new/double_door_opening_1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="video_container">
-                <video autoplay muted playsinline loop preload="metadata">
-                    <source src="assets/hardware/new/double_door_opening_2.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/board_drawing_wiping.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/desk_wiping.mp4" type="video/mp4">
-            </video>
-        </div> -->
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/pick_walk.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/singgle_door_opening.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="allegroupper">
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/backward_walking.mp4" type="video/mp4">
-            </video>
-            <video autoplay muted playsinline loop preload="metadata">
-                <source src="assets/hardware/new/singgle_door_opening.mp4" type="video/mp4">
-            </video>
-        </div>
-
 
 
         
@@ -426,7 +255,8 @@
 
         <h1>Acknowledgements</h1>
         <p>
-          The authors would like to thank all the developers of Crocoddyl and Pinocchio for their open source frameworks. 
+          The authors would like to thank all the developers of <a href="https://github.com/loco-3d/crocoddyl" target="_blank" style="color: blue;">Crocoddyl</a> 
+          and <a href="https://github.com/stack-of-tasks/pinocchio" target="_blank" style="color: blue;">Pinocchio</a> for their open source frameworks. 
           We are especially grateful to <a href="https://zhaomingxie.github.io/" target="_blank" style="color: blue;">Zhaoming Xie</a> and <a href="https://cmastalli.github.io/" target="_blank" style="color: blue;">Carlos Mastalli</a> for their professional discussions and insightful feedback.
         </p>
        
