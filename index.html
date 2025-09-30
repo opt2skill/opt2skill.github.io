@@ -18,15 +18,15 @@
               <div class="row uniform">
                 <div class="2u"><a href="https://fukangl.github.io/">                   <span class="image fit"><img src="assets/author_photo/fukang.jpg" alt="Fukang Liu" /></span>Fukang Liu</a></div>
                 <div class="2u"><a href="https://guzhaoyuan.com/">                      <span class="image fit"><img src="assets/author_photo/zhaoyuan.jpg" alt="Zhaoyuan Gu" /></span>Zhaoyuan Gu</a></div>
-                <div class="2u"><a href="https://missinglight.github.io/">              <span class="image fit"><img src="assets/author_photo/yilin.jpg" alt="Yilin Cai" /></span>Yilin Cai</a></div>
                 <div class="2u"><a href="https://ziyi-zhou.github.io/">                 <span class="image fit"><img src="assets/author_photo/ziyi.jpeg" alt="Ziyi Zhou" /></span>Ziyi Zhou</a></div>
+                <div class="2u"><a href="https://missinglight.github.io/">              <span class="image fit"><img src="assets/author_photo/yilin.jpg" alt="Yilin Cai" /></span>Yilin Cai</a></div>
                 <div class="2u"><a href="https://hyunyoungjung.github.io/">             <span class="image fit"><img src="assets/author_photo/hyunyoung.jpg" alt="Hyunyoung Jung" /></span>Hyunyoung Jung</a></div>
                 <div class="2u"><a href="https://opt2skill.github.io/">                 <span class="image fit"><img src="assets/author_photo/Jaehwi.png" alt="Jaehwi Jang" /></span>Jaehwi Jang</a></div>
                 <div class="2u"><a href="https://opt2skill.github.io/">                 <span class="image fit"><img src="assets/author_photo/shijie.jpg" alt="Shijie Zhao" /></span>Shijie Zhao</a></div>
                 <div class="2u"><a href="https://faculty.cc.gatech.edu/~sha9/">         <span class="image fit"><img src="assets/author_photo/sehoon.jpg" alt="Sehoon Ha" /></span>Sehoon Ha</a></div>
                 <div class="2u"><a href="https://research.gatech.edu/people/yue-chen">  <span class="image fit"><img src="assets/author_photo/yue.jpg" alt="Yue Chen" /></span>Yue Chen</a></div>
-                <div class="2u"><a href="https://faculty.cc.gatech.edu/~danfei/">       <span class="image fit"><img src="assets/author_photo/danfei.jpg" alt="Danfei Xu" /></span>Danfei Xu<sup>†</sup></a></div>
-                <div class="2u"><a href="https://research.gatech.edu/people/ye-zhao">   <span class="image fit"><img src="assets/author_photo/ye.jpg" alt="Ye Zhao" /></span>Ye Zhao<sup>†</sup></a></div>
+                <div class="2u"><a href="https://faculty.cc.gatech.edu/~danfei/">       <span class="image fit"><img src="assets/author_photo/danfei.jpg" alt="Danfei Xu" /></span>Danfei Xu</a></div>
+                <div class="2u"><a href="https://research.gatech.edu/people/ye-zhao">   <span class="image fit"><img src="assets/author_photo/ye.jpg" alt="Ye Zhao" /></span>Ye Zhao</a></div>
                   <!-- Add more authors in the same way -->
               </div>
           </div>
@@ -34,11 +34,22 @@
             <div class="gatech">
                 <p>Georgia Institute of Technology</p>
             </div>
+            <div class="acc">
+            <p>RAL 2025</p>
+            </div>
             <div class="button-container">
                 <a href="https://arxiv.org/abs/2409.20514" class="button">Paper</a>
                 <!-- <a href="https://www.youtube.com/watch?v=DRHfpCYXJfU" class="button">Video</a> -->
+                 <a href="#" class="button disabled">Code</a>
             </div>
 
+            <div class="code">
+                <p>The code will be releasing soon.</p>
+            </div>
+
+            <br>
+            <br>
+            <br>
             <br>
 
             <div class="teaser">
@@ -66,7 +77,7 @@
     
     <div id="overview">
 
-        <h1>Diverse walking modes</h1>
+        <h1>Diverse Walking Modes</h1>
 
         <p>
           Opt2Skill enables the Digit humanoid robot to perform diverse walking modes, including forward, backward, sideways, and turning gaits. 
@@ -95,6 +106,8 @@
         <p>
           In addition, it can handle rough terrain, such as stairs, ramps, and outdoor surfaces like grass.
         </p>
+        
+
 
         <div class="allegroupper">
             <video autoplay muted playsinline loop preload="metadata">
@@ -115,15 +128,22 @@
             </video>
         </div>
 
+        <p>
+        We also observed that Opt2Skill may <strong>generalize beyond the training range</strong> in locomotion tasks. 
+        For example, the training foot clearance ranged from 0.1 to 0.2 m, 
+        but at test time, the policy successfully executed trajectories with 0.25 m clearance.
+        </p>
 
-        <h1>Diverse loco-manipulation tasks</h1>
+
+        <h1>Diverse Contact-Rich Loco-Manipulation Tasks</h1>
 
         <p>
-          Opt2Skill also enables the Digit humanoid robot to perform multi-contact whole-body loco-manipulation tasks, 
+          Opt2Skill also enables the Digit humanoid robot to perform <strong>multi-contact whole-body loco-manipulation tasks</strong>, 
           such as pushing an object on a desk beyond its support polygon. 
           To maintain balance, the robot stabilizes itself by leaning on the table with one elbow while reaching out with the opposite arm to push the box. 
-          The legs coordinate with upper-body motion to support this forward-reaching behavior, demonstrating the need for whole-body coordination. 
-          This example showcases Opt2Skill’s capability to handle high-dimensional loco-manipulation tasks.
+          The legs coordinate with upper-body motion to support this forward-reaching behavior, 
+          demonstrating the need for <strong>whole-body coordination</strong>. 
+          This example showcases Opt2Skill’s capability to handle high-dimensional contact-rich loco-manipulation tasks.
         </p>
 
         <div class="allegrofail">
@@ -138,9 +158,13 @@
         
         <p>
           In shelf manipulation scenarios, the Digit robot squats to pick up a plastic box from a lower shelf and places it on a higher one. 
-          Its hands can reach heights ranging from 0.4 m to 1.8 m. 
-          Opt2Skill demonstrates accurate tracking of hand positions throughout these complex motion sequences, 
-          achieving an average tracking error of less than 4 cm without online trajectory adaptation.
+          The training hand target heights ranged from 0.55 to 1.70 m, 
+          while the test scenario included targets at 0.4 m and 1.8 m in the z direction, 
+          demonstrating that Opt2Skill can handle moderate variations <strong>beyond the training range</strong>.
+        </p>  
+        <p>
+          Moreover, Opt2Skill achieves accurate tracking of hand positions throughout these complex motion sequences, 
+          with an average tracking error of less than 4 cm <strong>without online trajectory adaptation</strong>.
         </p>
 
 
@@ -161,8 +185,8 @@
 
           <br>
         <p>
-          In the <i>heavy box pickup</i> task, the robot squats down and successfully lifts a box weighing up to 4.9 kg. 
-          This task requires precise hand positioning and force control to lift the box without losing balance or dropping it.
+          In the <i>heavy box pickup</i> task, the robot squats down and successfully lifts a box weighing up to <strong>4.9 kg</strong>. 
+          This task requires precise <strong>hand positioning</strong> and <strong>force control</strong> to lift the box without losing balance or dropping it.
         </p>
 
         <div class="allegroupper">
@@ -177,9 +201,9 @@
           <br>
           <p>
           In the <i>pickup+walk</i> task, the robot picks up a box from a standing pose and walks forward while carrying it. 
-          This requires the robot to maintain balance and apply sufficient contact force to hold the box, 
+          This requires the robot to maintain balance and apply <strong>sufficient contact force</strong> to hold the box, 
           demanding accurate hand positioning and force control. 
-          The task demonstrates Opt2Skill’s ability to adapt to dynamic load changes and maintain stability during locomotion.
+          The task demonstrates Opt2Skill’s ability to adapt to <strong>dynamic load changes</strong> and maintain stability during locomotion.
           </p>
 
 
@@ -194,7 +218,8 @@
         <br>
         <p>
           In the <i>door opening</i> task, the robot approaches two heavy fire doors and pushes them open using both arms while walking.
-          This requires maintaining balance and applying sufficient force, demonstrating the robot's ability to handle heavy objects and adapt to dynamic environments.
+          This requires maintaining balance and applying <strong>sufficient force</strong>, 
+          demonstrating the robot's ability to handle heavy objects and adapt to <strong>dynamic environments</strong>.
         </p>
 
         <div class="allegrofail">
@@ -219,7 +244,7 @@
         <br>
         <p>
           In the <i>drawing+wiping</i> task, the robot uses one hand to draw lines on a whiteboard and the other hand to wipe them off. 
-          This task requires precise hand positioning and force control to ensure the lines are drawn clearly and erased effectively.
+          This task requires <strong>precise hand positioning</strong> and <strong>force control</strong> to ensure the lines are drawn clearly and erased effectively.
         </p>
            
         <div class="allegroupper">
@@ -235,7 +260,7 @@
         <p>
           These results illustrate that our framework maintains compliant contact, 
           adapts effectively to environmental variations, and enables the robot to perform everyday loco-manipulation behaviors. 
-          Together, these examples further highlight the versatility and generalization capability of the Opt2Skill framework across diverse real-world scenarios.
+          Together, these examples further highlight the <strong>versatility</strong> and <strong>generalization</strong> capability of the Opt2Skill framework across diverse real-world scenarios.
         </p>
 
       
@@ -249,8 +274,8 @@
         <p>
         Opt2Skill aims to develop an RL-based whole-body controller that enables a humanoid robot to track model-based optimal trajectories. 
         These trajectories contain valuable torque reference that enables a high success rate in multi-contact loco-manipulation tasks. 
-        We begin by generating dynamically feasible and task-specific motions using DDP. 
-        These trajectories serve as high-quality reference motions that encode contact-rich dynamics, torque limits, and task-solving strategies. 
+        We begin by generating <strong>dynamically feasible</strong> and <strong>task-specific</strong> motions using DDP. 
+        These trajectories serve as <strong>high-quality</strong> reference motions that encode contact-rich dynamics, torque limits, and task-solving strategies. 
         We generate a diverse set of such trajectories offline and use them to guide the training of RL policies that directly predict joint-level target positions.
         By leveraging physically consistent references, the policy learns robust control strategies that track diverse reference motions sampled offline and transfer effectively to real hardware.
         </p>
@@ -267,15 +292,16 @@
         <h1>Whole-body Reference Motions Generation</h1>
 
         <p>
-          To support robust policy learning across a wide range of loco-manipulation behaviors, 
-          we generate reference trajectories for diverse tasks, 
-          including <i>walking</i>, <i>jumping</i>, <i>stair climbing</i>, <i>object manipulation</i>, <i>drawing+wiping</i>, and <i>door opening</i>. 
-          For each task, we systematically vary key motion parameters such as <i>gait phase</i>, <i>contact mode</i>, <i>walking speed</i>, <i>foot clearance</i>, <i>center of mass position</i>, and <i>target object location</i>. 
-          Leveraging the flexibility of our trajectory optimization (TO) framework, 
-          we efficiently sample these parameters to produce large datasets of motions that satisfy full-body dynamics, contact constraints, and torque limits.
-          <br>
-          These reference trajectories include joint torques and contact forces, 
-          which are incorporated directly into the policy observations and reward design—facilitating the learning of robust and transferable contact-rich loco-manipulation behaviors.
+            To support robust policy learning across a wide range of loco-manipulation behaviors, 
+            we generate reference trajectories for diverse tasks, 
+            including <i>walking</i>, <i>jumping</i>, <i>stair climbing</i>, <i>object manipulation</i>, <i>drawing and wiping</i>, and <i>door opening</i>. 
+            For each task, we systematically vary key motion parameters such as <i>gait phase</i>, <i>contact mode</i>, <i>walking speed</i>, <i>foot clearance</i>, <i>center of mass position</i>, and <i>target object location</i>. 
+            Leveraging the flexibility of our trajectory optimization (TO) framework, 
+            we efficiently sample these parameters to produce large datasets of motions that satisfy full-body dynamics, contact constraints, and torque limits.
+        <br>
+            These reference trajectories include critical <strong>dynamics-relevant properties</strong> such as joint torques and interaction forces, 
+            which are often missing from purely <strong>kinematic demonstrations</strong>. 
+            Such information can be directly incorporated into policy observations and reward design—facilitating the learning of robust and transferable <strong>contact-rich</strong> loco-manipulation behaviors.
         </p>
         
         
@@ -301,11 +327,13 @@
         </div>
 
 
-        <h1><i>How does the quality and source of motion datasets affect the performance and generalization of Humanoid RL Policies?</i></h1>
+        <h1 style="font-size:27px;">
+        <strong><i>How does the quality and source of motion datasets affect the performance and generalization of Humanoid RL Policies?</i></strong>
+        </h1>
 
         <p>
           We compare Opt2Skill with baselines that rely on human demonstrations and inverse kinematics-based references.
-          These results show that physical feasibility and task adaptability of TO-based references contribute to both local tracking accuracy and long-term global stability.
+          These results show that <strong>physical feasibility</strong> and <strong>task adaptability</strong> of TO-based references contribute to both <strong>local tracking accuracy</strong> and <strong>long-term global stability</strong>.
         </p>
 
         <div class="allegrofail">
@@ -329,7 +357,9 @@
         </div>
 
 
-        <h1><i>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</i></h1>
+        <h1 style="font-size:27px;">
+        <strong><i>What role does torque information play in learning physically consistent and contact-rich humanoid behaviors?</i></strong>
+        </h1>
 
         <p>
           We conduct additional simulation experiments to investigate the effect of torque information in contact-rich tasks. 
@@ -344,10 +374,17 @@
         </p>
         
         <p>
-          We demonstrate that joint torque information—available only from trajectory optimization (TO)—enhances tracking performance in contact-rich scenarios. 
-          Torque information plays a crucial role by guiding <em>when</em> and <em>how</em> force should be applied during motion. 
+          We demonstrate that <strong>joint torque information—available only from trajectory optimization (TO)—enhances tracking performance in contact-rich scenarios. 
+          Torque information plays a crucial role by guiding <strong><em>when</em></strong> and <strong><em>how</em></strong> force should be applied during motion. 
           Combining both torque and contact force information yields the best tracking performance in loco-manipulation tasks. 
           TO provides reference torques, which help anchor the policy to physically grounded and consistent behaviors.
+        </p>
+        <p>
+          Moreover, <strong>policies trained with TO-generated references adapt when the environment deviates from nominal settings</strong> (e.g., table height). 
+          For instance, with a trajectory defined for 0.95 m height and 15 N contact force, 
+          the policy maintained wiping at 0.9 m and 1.0 m table heights, 
+          achieving average forces of 9.6±1.5 N and 21.3±2.0 N, 
+          and tracking errors of 4.1±1.6 cm and 4.5 ± 2.0 cm, respectively.
         </p>
 
         <div class="allegrofail">
@@ -379,9 +416,10 @@
          <p class="bibtex">
             @article{liu2024opt2skill,<br>
             &nbsp;&nbsp;title={Opt2Skill: Imitating Dynamically-feasible Whole-Body Trajectories for Versatile Humanoid Loco-Manipulation},<br>
-            &nbsp;&nbsp;author={Liu, Fukang and Gu, Zhaoyuan and Cai, Yilin and Zhou, Ziyi and Zhao, Shijie and Jung, Hyunyoung and Ha, Sehoon and Chen, Yue and Xu, Danfei and Zhao, Ye},<br>
-            &nbsp;&nbsp;journal={arXiv preprint arXiv:2409.20514}<br>
-            &nbsp;&nbsp;year={2024},<br>
+            &nbsp;&nbsp;author={Liu, Fukang and Gu, Zhaoyuan and Zhou, Ziyi and Cai, Yilin and Jung, Hyunyoung and Jang, Jaehwi and Zhao, Shijie  and Ha, Sehoon and Chen, Yue and Xu, Danfei and Zhao, Ye},<br>
+            &nbsp;&nbsp;journal={IEEE Robotics and Automation Letters},<br>
+            &nbsp;&nbsp;year={2025},<br>
+            &nbsp;&nbsp;publisher={IEEE}<br>
             }
         </p>
 

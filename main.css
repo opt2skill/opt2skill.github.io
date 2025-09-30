@@ -148,6 +148,24 @@ body {
     text-align: center;
 }
 
+.acc {
+    color: #2f2f2f;
+    font-family: "Times New Roman", Times, serif; /* force Times New Roman */
+    font-weight: normal;
+    font-size: 1.2vw;
+    padding-top: 1.0vw;
+    text-align: center;
+}
+
+.code {
+    color: #2f2f2f;
+    font-family: "Times New Roman", Times, serif; /* force Times New Roman */
+    font-weight: normal;
+    font-size: 0.8vw;
+    padding-top: 1.0vw;
+    text-align: center;
+}
+
 .button-container {
     color: #2f2f2f;
     justify-items: center;
